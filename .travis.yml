@@ -17,8 +17,3 @@ deploy:
     bucket_path: "docker-react"
     on:
         branch: master
-
-
-        AKIAUTKWSHGA6VORJD7W
-
-        hyF5GgpYXABp2SZUNnQdESwseg0NOIRaJJmAFoFJ
