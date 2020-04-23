@@ -3,11 +3,11 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t atzepeng/dockercourse -f ./react-image/Dockerfile.dev ./react-image
+    - docker build -t atzepeng/dockercourse -f ./$context/Dockerfile.dev ./$context
 script:
     - docker run -e CI=true atzepeng/dockercourse npm run test
 before_deploy: 
-    - cd react-image
+    - cd $context
 deploy:
     provider: elasticbeanstalk
     access_key_id: $AWS_ACCESS_KEY
@@ -19,3 +19,4 @@ deploy:
     bucket_path: "docker-react"
     on:
         branch: master
+        condition: $doDeploy = true
