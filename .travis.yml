@@ -6,6 +6,8 @@ before_install:
     - docker build -t atzepeng/dockercourse -f ./react-image/Dockerfile.dev ./react-image
 script:
     - docker run -e CI=true atzepeng/dockercourse npm run test
+before_deploy: 
+    - cd react-image
 deploy:
     skip_cleanup: true
     provider: elasticbeanstalk
