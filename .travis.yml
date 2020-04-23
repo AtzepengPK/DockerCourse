@@ -9,7 +9,6 @@ script:
 before_deploy: 
     - cd react-image
 deploy:
-    skip_cleanup: true
     provider: elasticbeanstalk
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
