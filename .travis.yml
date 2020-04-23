@@ -1,12 +1,24 @@
 language: node_js
 sudo: required
 services:
-- docker
+    - docker
 before_install:
-- docker build -t atzepeng/dockercourse -f ./react-image/Dockerfile.dev ./react-image
+    - docker build -t atzepeng/dockercourse -f ./react-image/Dockerfile.dev ./react-image
 script:
-- docker run -e CI=true atzepeng/dockercourse npm run test
+    - docker run -e CI=true atzepeng/dockercourse npm run test
 deploy:
-  provider: firebase
-  token:
-    secure: XnIj0loLo625RDSbQ4asJ06nDFg8zWaW1Lvt00lpSMBJ/PzBcLkIEqy4AerXaZYlYG6zeRfOkNHObinY5hHaz+1YlNeMQGUcnJwHSrNVVyArQwkBHOz5UAAIuAqwTMX4KPIjek02bOdjJzzuckUxwsmSZ577S3hwRuYNVf+46So6mPzxy8cu9GxrsEA9X3wTt4dXay7AtH95PrXQ+SUH+zy+8I15iCCOb7a+f/mHLRmThS0OMeHMvGLHKyUGc2nONiZgakxdUiUEd4ST9fRRIWCNCm6zqDE7SkinuM4PulH4RXqii+2XwpZRm5pBD9XPlbuJG/rKogfoV60BaeDwOlClhwqR6FqBd0UCjk4g+GUUwY6s5rIJ7FVF4tcNe0vMVn+Xq41fOGc0pcsiZQQMoJtbFfkFwf3KqAyEAIs9h77vFI3mGiNukVRLvVxlXR0O0THF1qEgMCTgZVbSoV8uoh6LCytWM2VC6b+B1tVHCaIJ9KC8kRy7xXOSLfD/lHm4gmmW0K+nt1yiBQFLs8Fkpoyaie+5okydIK6PFc5TgWgGZPXg+Z5E08rfEooqE9W5AKE6PtPv6PnxaXC5NWod+BLR2162XK/anbZeEUHjjDdk21cLRxqyxaHAeOjxmxbi5uQ2iGbnlzOmk2HnFcs08QpwtRxY1OXJrgCKeNGbS1M=
+    provider: elasticbeanstalk
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    region: "us-east-2"
+    app: "docker-react"
+    env: "dockerReact-env"
+    bucket_name: "elasticbeanstalk-us-east-2-316398516609"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+
+
+        AKIAUTKWSHGA6VORJD7W
+
+        hyF5GgpYXABp2SZUNnQdESwseg0NOIRaJJmAFoFJ
