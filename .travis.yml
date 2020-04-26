@@ -3,9 +3,19 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t atzepeng/dockercourse -f ./$context/Dockerfile.dev ./$context
+    - docker build -t atzepeng/dockercourse -f ./$context$project/Dockerfile.dev ./$context
 script:
     - docker run -e CI=true atzepeng/dockercourse npm run test
+after_success:
+    - docker build -t atzepeng/multi-client ./$context$project
+    - docker build -t atzepeng/multi-ngnx ./$context/nginx
+    - docker build -t atzepeng/multi-server ./$context/server
+    - docker build -t atzepeng/multi-worker ./$context/worker
+    - echo "$psw" | docker login -u "$user" --password-stdin
+    - docker push atzepeng/multi-client
+    - docker push atzepeng/multi-ngnx
+    - docker push atzepeng/multi-server
+    - docker push atzepeng/multi-worker
 before_deploy: 
     - cd $context
 deploy:
