@@ -3,7 +3,8 @@ sudo: required
 services:
     - docker
 before_install:
-    - docker build -t atzepeng/dockercourse -f ./$context$project/Dockerfile.dev ./$context
+    - echo 
+    - docker build -t atzepeng/dockercourse -f ./$context$project/Dockerfile.dev ./$context$project
 script:
     - docker run -e CI=true atzepeng/dockercourse npm run test
 after_success:
