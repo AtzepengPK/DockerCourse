@@ -23,11 +23,11 @@ deploy:
     provider: elasticbeanstalk
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-    region: "us-east-2"
-    app: "docker-react"
-    env: "dockerReact-env"
-    bucket_name: "elasticbeanstalk-us-east-2-316398516609"
-    bucket_path: "docker-react"
+    region: "eu-west-2"
+    app: "multi-docker-mc"
+    env: "MultiDockerMc-env"
+    bucket_name: "elasticbeanstalk-eu-west-2-316398516609"
+    bucket_path: "docker-multi"
     on:
         branch: master
         condition: $doDeploy = true
